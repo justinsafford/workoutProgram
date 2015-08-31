@@ -26,7 +26,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="WorkoutProgram" target="1.5" />
+      <module name="WorkoutProgram" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

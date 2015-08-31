@@ -1,0 +1,4 @@
+target/classes/application.properties
+target/classes/demo/
+target/test-classes/demo/
+target/test-classes/responses/
