@@ -1,5 +1,5 @@
 target/classes/application.properties
 target/classes/demo/
 target/test-classes/demo/
-.idea/workspace.xml
 target/test-classes/responses/
+.idea/workspace.xml
