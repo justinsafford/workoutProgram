@@ -2,30 +2,40 @@ package demo.exercise;
 
 import demo.data.ExerciseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 public class ExerciseController {
+    private ExerciseRepository exerciseRepository;
 
     @Autowired
-    private ExerciseRepository exerciseRepository;
+    public ExerciseController(ExerciseRepository exerciseRepository) {
+        this.exerciseRepository = exerciseRepository;
+    }
 
     @RequestMapping(
             value = "/exercises",
             method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE
-    )
+            produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Exercise> getExercises() {
         return exerciseRepository.findAll();
     }
 
-    public Exercise addNewExercise(Exercise exercise){
-        return exerciseRepository.save(exercise);
-    }
+    @RequestMapping(
+            value = "/exercises",
+            method = RequestMethod.POST,
+            consumes = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public Exercise addNewExercise(@RequestBody ExerciseRequest exerciseRequest) {
+        Exercise exercise = new Exercise();
+        exercise.setExerciseName(exerciseRequest.getExerciseName());
+        exercise.setMuscleGroup(exerciseRequest.getMuscleGroup());
+        exerciseRepository.save(exercise);
 
+        return exercise;
+    }
 }

@@ -63,15 +63,12 @@ public class WorkoutTest {
         exercise.setExerciseName("exercise-name");
         exercise.setMuscleGroup("muscle-type");
 
-        exercise.setReps(10);
-
         workout.addExerciseToWorkout(exercise);
 
         assertThat(workout.getExerciseList(), hasSize(1));
         assertThat(workout.getExerciseList(), contains(exercise));
         assertThat(workout.getExerciseList().get(0).getExerciseName(), is("exercise-name"));
         assertThat(workout.getExerciseList().get(0).getMuscleGroup(), is("muscle-type"));
-        assertThat(workout.getExerciseList().get(0).getReps(), is(10));
     }
 
     @Test
@@ -79,12 +76,10 @@ public class WorkoutTest {
         Exercise exercise = new Exercise();
         exercise.setExerciseName("exercise-name");
         exercise.setMuscleGroup("muscle-type");
-        exercise.setReps(10);
 
         Exercise anotherExercise = new Exercise();
         anotherExercise.setExerciseName("exercise-name2");
         anotherExercise.setMuscleGroup("muscle-type2");
-        anotherExercise.setReps(20);
 
         workout.addExerciseToWorkout(exercise);
         workout.addExerciseToWorkout(anotherExercise);
@@ -93,11 +88,9 @@ public class WorkoutTest {
         assertThat(workout.getExerciseList(), contains(exercise, anotherExercise));
         assertThat(workout.getExerciseList().get(0).getExerciseName(), is("exercise-name"));
         assertThat(workout.getExerciseList().get(0).getMuscleGroup(), is("muscle-type"));
-        assertThat(workout.getExerciseList().get(0).getReps(), is(10));
 
         assertThat(workout.getExerciseList().get(1).getExerciseName(), is("exercise-name2"));
         assertThat(workout.getExerciseList().get(1).getMuscleGroup(), is("muscle-type2"));
-        assertThat(workout.getExerciseList().get(1).getReps(), is(20));
     }
 
     @Test
@@ -112,17 +105,14 @@ public class WorkoutTest {
         Exercise exercise = new Exercise();
         exercise.setExerciseName("exercise-name1");
         exercise.setMuscleGroup("muscle-type1");
-        exercise.setReps(10);
 
         Exercise anotherExercise = new Exercise();
         anotherExercise.setExerciseName("exercise-name1");
         anotherExercise.setMuscleGroup("muscle-type1");
-        anotherExercise.setReps(20);
 
         Exercise anotherExercise2 = new Exercise();
         anotherExercise2.setExerciseName("exercise-name2");
         anotherExercise2.setMuscleGroup("muscle-type2");
-        anotherExercise2.setReps(30);
 
         workout.addExerciseToWorkout(exercise);
         workout.addExerciseToWorkout(anotherExercise);
@@ -142,12 +132,10 @@ public class WorkoutTest {
         Exercise exercise1 = new Exercise();
         exercise1.setExerciseName("Bench Press");
         exercise1.setMuscleGroup("Chest");
-        exercise1.setReps(10);
 
         Exercise exercise2 = new Exercise();
         exercise2.setExerciseName("Row");
         exercise2.setMuscleGroup("Back");
-        exercise2.setReps(20);
 
         workout1.addExerciseToWorkout(exercise1);
         workout1.addExerciseToWorkout(exercise2);

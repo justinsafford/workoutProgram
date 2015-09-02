@@ -1,15 +1,8 @@
 package demo.exercise;
 
-import org.springframework.data.annotation.Id;
-
-public class Exercise {
-
-    @Id
-    private String id;
-
+public class ExerciseRequest {
     private String exerciseName;
     private String muscleGroup;
-
 
     public String getExerciseName() {
         return exerciseName;
@@ -27,4 +20,3 @@ public class Exercise {
         this.muscleGroup = muscleGroup;
     }
 }
-

@@ -1,5 +1,6 @@
-package demo;
+package demo.integration;
 
+import demo.Application;
 import demo.data.ExerciseRepository;
 import demo.exercise.Exercise;
 import org.junit.Before;
@@ -25,7 +26,7 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppC
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
 @WebAppConfiguration
-public class integration {
+public class GetExercises {
 
     @Autowired
     ExerciseRepository exerciseRepository;
@@ -34,7 +35,6 @@ public class integration {
     WebApplicationContext webApplicationContext;
 
     MockMvc mockMvc;
-
 
     @Before
     public void setupMock() {
@@ -45,21 +45,23 @@ public class integration {
                 .build();
     }
 
+    @Before
+    public void clearDb() {
+        exerciseRepository.deleteAll();
+    }
+
     @Test
     public void returnAllAvailableExercises() throws Exception {
         Exercise exercise = new Exercise();
         exercise.setExerciseName("Chest Press");
         exercise.setMuscleGroup("Chest");
-        exercise.setReps(10);
 
         Exercise exercise2 = new Exercise();
         exercise2.setExerciseName("Bicep Curl");
         exercise2.setMuscleGroup("Biceps");
-        exercise2.setReps(12);
 
         exerciseRepository.save(exercise);
         exerciseRepository.save(exercise2);
-
 
         ClassPathResource classPathResource = new ClassPathResource("/responses/getExercises.json");
         String expectedBody = new String(Files.readAllBytes(Paths.get(classPathResource.getURI())));
