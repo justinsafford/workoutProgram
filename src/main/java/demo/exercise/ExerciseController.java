@@ -36,6 +36,10 @@ public class ExerciseController {
             throw new BadRequestException("You must send Exercise Name");
         }
 
+        if(exerciseRequest.getMuscleGroup() == ""){
+            throw new BadRequestException("You must send Muscle Group");
+        }
+
         Exercise exercise = new Exercise();
         exercise.setExerciseName(exerciseRequest.getExerciseName());
         exercise.setMuscleGroup(exerciseRequest.getMuscleGroup());
