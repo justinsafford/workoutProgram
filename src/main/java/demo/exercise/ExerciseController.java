@@ -31,6 +31,11 @@ public class ExerciseController {
             consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.ACCEPTED)
     public Exercise addNewExercise(@RequestBody ExerciseRequest exerciseRequest) {
+
+        if(exerciseRequest.getExerciseName() == ""){
+            throw new BadRequestException("You must send Exercise Name");
+        }
+
         Exercise exercise = new Exercise();
         exercise.setExerciseName(exerciseRequest.getExerciseName());
         exercise.setMuscleGroup(exerciseRequest.getMuscleGroup());

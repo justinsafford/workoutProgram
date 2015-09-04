@@ -4,6 +4,7 @@ import demo.Application;
 import demo.data.ExerciseRepository;
 import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -16,6 +17,7 @@ import java.util.Collections;
 import java.util.List;
 
 import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.Is.isA;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.*;
 
@@ -24,6 +26,9 @@ import static org.mockito.Mockito.*;
 public class ExerciseControllerTest {
     @Mock
     ExerciseRepository exerciseRepository;
+
+    @Rule
+    public ExpectedException expectedException = ExpectedException.none();
 
     @InjectMocks
     ExerciseController exerciseController;
@@ -45,7 +50,19 @@ public class ExerciseControllerTest {
 
 //TODO:Figure out how to test this controller
 // assertThat(actualExercise, is(expectedExercise));
-        verify(exerciseRepository, times(1)).save(isA(Exercise.class));
+        verify(exerciseRepository, times(1)).save((Iterable<Exercise>) isA(Exercise.class));
+    }
+
+    @Test
+    public void addNewExerciseWithNoExerciseName() throws BadRequestException {
+        expectedException.expectCause(isA(BadRequestException.class));
+        expectedException.expectMessage("You must send Exercise Name");
+
+        ExerciseRequest exerciseRequest = new ExerciseRequest();
+        exerciseRequest.setExerciseName("");
+        exerciseRequest.setMuscleGroup("Muscle");
+        Exercise actualExercise = exerciseController.addNewExercise(exerciseRequest);
+
     }
 
     @Test
