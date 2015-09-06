@@ -2,7 +2,7 @@ package demo.integration;
 
 import demo.Application;
 import demo.data.ExerciseRepository;
-import demo.exercise.Exercise;
+import demo.exercise.ExerciseEntity;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -52,16 +52,16 @@ public class GetExercises {
 
     @Test
     public void returnAllAvailableExercises_Integration() throws Exception {
-        Exercise exercise = new Exercise();
-        exercise.setExerciseName("Chest Press");
-        exercise.setMuscleGroup("Chest");
+        ExerciseEntity exerciseEntity = new ExerciseEntity();
+        exerciseEntity.setExerciseName("Chest Press");
+        exerciseEntity.setMuscleGroup("Chest");
 
-        Exercise exercise2 = new Exercise();
-        exercise2.setExerciseName("Bicep Curl");
-        exercise2.setMuscleGroup("Biceps");
+        ExerciseEntity exerciseEntity2 = new ExerciseEntity();
+        exerciseEntity2.setExerciseName("Bicep Curl");
+        exerciseEntity2.setMuscleGroup("Biceps");
 
-        exerciseRepository.save(exercise);
-        exerciseRepository.save(exercise2);
+        exerciseRepository.save(exerciseEntity);
+        exerciseRepository.save(exerciseEntity2);
 
         ClassPathResource classPathResource = new ClassPathResource("/responses/getExercises.json");
         String expectedBody = new String(Files.readAllBytes(Paths.get(classPathResource.getURI())));

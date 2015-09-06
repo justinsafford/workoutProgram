@@ -18,6 +18,7 @@ public class WorkoutController {
         this.workoutRepository = workoutRepository;
     }
 
+
     @RequestMapping(
             value = "/workouts",
             method = RequestMethod.POST,

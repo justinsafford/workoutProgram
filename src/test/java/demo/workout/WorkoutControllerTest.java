@@ -57,10 +57,10 @@ public class WorkoutControllerTest {
 
 //    @Test
 //    public void returnAvailableExercises() {
-//        List<Exercise> expectedData = Collections.singletonList(new Exercise());
+//        List<ExerciseEntity> expectedData = Collections.singletonList(new ExerciseEntity());
 //        when(exerciseRepository.findAll()).thenReturn(expectedData);
 //
-//        List<Exercise> actualData = exerciseController.getExercises();
+//        List<ExerciseEntity> actualData = exerciseController.getExercises();
 //
 //        assertThat(actualData, is(expectedData));
 //    }

@@ -1,9 +1,8 @@
 package demo;
 
 import demo.data.ExerciseRepository;
-import demo.exercise.Exercise;
+import demo.exercise.ExerciseEntity;
 import demo.exercise.ExerciseController;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -53,9 +52,9 @@ public class addExercise {
 
     @Test
     public void addNewExercise_Integration() throws Exception {
-        Exercise exercise = new Exercise();
-        exercise.setExerciseName("Shoulder Press");
-        exercise.setMuscleGroup("Shoulder");
+        ExerciseEntity exerciseEntity = new ExerciseEntity();
+        exerciseEntity.setExerciseName("Shoulder Press");
+        exerciseEntity.setMuscleGroup("Shoulder");
 
         ClassPathResource classPathResource = new ClassPathResource("/responses/addExercise.json");
         String expectedBody = new String(Files.readAllBytes(Paths.get(classPathResource.getURI())));
@@ -64,16 +63,16 @@ public class addExercise {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(expectedBody)
                 .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isAccepted());
+                .andExpect(status().isCreated());
         //TODO: Find out where this exception is coming from
 //                .andExpect(jsonPath("$.exerciseName", is("Shoulder Press")))
 //                .andExpect(jsonPath("$.muscleGroup", is("Shoulder")));
 
-        List<Exercise> exerciseList = exerciseRepository.findAll();
-        assertThat(exerciseList, hasSize(1));
-        Exercise actualExercise = exerciseList.get(0);
+        List<ExerciseEntity> exerciseEntityList = exerciseRepository.findAll();
+        assertThat(exerciseEntityList, hasSize(1));
+        ExerciseEntity actualExerciseEntity = exerciseEntityList.get(0);
 
-        assertThat(actualExercise.getExerciseName(), is("Shoulder Press"));
-        assertThat(actualExercise.getMuscleGroup(), is("Shoulder"));
+        assertThat(actualExerciseEntity.getExerciseName(), is("Shoulder Press"));
+        assertThat(actualExerciseEntity.getMuscleGroup(), is("Shoulder"));
     }
 }
