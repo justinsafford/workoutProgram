@@ -6,6 +6,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class WorkoutController {
 
@@ -29,7 +31,14 @@ public class WorkoutController {
         workoutRepository.save(workoutEntity);
 
         return workoutEntity;
+    }
 
+    @RequestMapping(
+            value = "/workouts",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<WorkoutEntity> getAllWorkouts() {
+        return workoutRepository.findAll();
     }
 }
 
@@ -48,10 +57,4 @@ public class WorkoutController {
 
 
 
-//    @RequestMapping(
-//            value = "/workouts",
-//            method = RequestMethod.GET,
-//            produces = MediaType.APPLICATION_JSON_VALUE)
-//    public List<Exercise> getExercises() {
-//        return exerciseRepository.findAll();
-//    }
+

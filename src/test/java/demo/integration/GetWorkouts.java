@@ -1,8 +1,9 @@
 package demo.integration;
 
 import demo.Application;
-import demo.data.ExerciseRepository;
-import demo.exercise.Exercise;
+import demo.data.WorkoutRepository;
+import demo.workout.ExerciseSet;
+import demo.workout.WorkoutEntity;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,6 +18,8 @@ import org.springframework.web.context.WebApplicationContext;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -26,10 +29,10 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppC
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
 @WebAppConfiguration
-public class GetExercises {
+public class GetWorkouts {
 
     @Autowired
-    ExerciseRepository exerciseRepository;
+    WorkoutRepository workoutRepository;
 
     @Autowired
     WebApplicationContext webApplicationContext;
@@ -47,26 +50,35 @@ public class GetExercises {
 
     @Before
     public void clearDb() {
-        exerciseRepository.deleteAll();
+        workoutRepository.deleteAll();
     }
 
     @Test
-    public void returnAllAvailableExercises_Integration() throws Exception {
-        Exercise exercise = new Exercise();
-        exercise.setExerciseName("Chest Press");
-        exercise.setMuscleGroup("Chest");
+    public void returnAllAvailableWorkout_Integration() throws Exception {
+        WorkoutEntity workoutEntity = new WorkoutEntity();
+        workoutEntity.setDayWorkoutOccurred("Thursday");
 
-        Exercise exercise2 = new Exercise();
-        exercise2.setExerciseName("Bicep Curl");
-        exercise2.setMuscleGroup("Biceps");
+        ExerciseSet exerciseSet1 = new ExerciseSet();
+        exerciseSet1.setExerciseName("Incline Shoulder Press");
+        exerciseSet1.setMuscleGroup("Shoulder");
+        exerciseSet1.setReps(new String[]{"10", "9", "8", "8"});
 
-        exerciseRepository.save(exercise);
-        exerciseRepository.save(exercise2);
+        ExerciseSet exerciseSet2 = new ExerciseSet();
+        exerciseSet2.setExerciseName("Incline Bench Press");
+        exerciseSet2.setMuscleGroup("Chest");
+        exerciseSet2.setReps(new String[]{"20", "12", "13", "14", "15"});
 
-        ClassPathResource classPathResource = new ClassPathResource("/responses/getExercises.json");
+        List<ExerciseSet> exerciseSets = new ArrayList<>();
+        exerciseSets.add(exerciseSet1);
+        exerciseSets.add(exerciseSet2);
+        workoutEntity.setExerciseSets(exerciseSets);
+
+        workoutRepository.save(workoutEntity);
+
+        ClassPathResource classPathResource = new ClassPathResource("/responses/getWorkouts.json");
         String expectedBody = new String(Files.readAllBytes(Paths.get(classPathResource.getURI())));
 
-        mockMvc.perform(get("/exercises"))
+        mockMvc.perform(get("/workouts"))
                 .andExpect(status().isOk())
                 .andExpect(content().json(expectedBody));
     }

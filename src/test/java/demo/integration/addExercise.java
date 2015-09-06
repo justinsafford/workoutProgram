@@ -52,7 +52,7 @@ public class addExercise {
     }
 
     @Test
-    public void addNewExercise() throws Exception {
+    public void addNewExercise_Integration() throws Exception {
         Exercise exercise = new Exercise();
         exercise.setExerciseName("Shoulder Press");
         exercise.setMuscleGroup("Shoulder");

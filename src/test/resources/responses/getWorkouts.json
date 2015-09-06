@@ -1,0 +1,28 @@
+[
+  {
+    "dayWorkoutOccurred": "Thursday",
+    "exerciseSets": [
+      {
+        "exerciseName": "Incline Shoulder Press",
+        "muscleGroup": "Shoulder",
+        "reps": [
+          "10",
+          "9",
+          "8",
+          "8"
+        ]
+      },
+      {
+        "exerciseName": "Incline Bench Press",
+        "muscleGroup": "Chest",
+        "reps": [
+          "20",
+          "12",
+          "13",
+          "14",
+          "15"
+        ]
+      }
+    ]
+  }
+]

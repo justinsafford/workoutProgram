@@ -53,7 +53,7 @@ public class addWorkout {
     }
 
     @Test
-    public void addNewWorkout() throws Exception {
+    public void addNewWorkout_Integration() throws Exception {
         ClassPathResource classPathResource = new ClassPathResource("/responses/addWorkout.json");
         String expectedBody = new String(Files.readAllBytes(Paths.get(classPathResource.getURI())));
 
@@ -80,7 +80,7 @@ public class addWorkout {
     }
 
     @Test
-    public void addMultipleNewWorkouts() throws Exception {
+    public void addMultipleNewWorkouts_Integration() throws Exception {
         ClassPathResource classPathResource = new ClassPathResource("/responses/addWorkouts.json");
         String expectedBody = new String(Files.readAllBytes(Paths.get(classPathResource.getURI())));
 
