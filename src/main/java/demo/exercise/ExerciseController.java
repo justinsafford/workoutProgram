@@ -30,6 +30,7 @@ public class ExerciseController {
             method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.ACCEPTED)
+    //TODO:Change this to a responseDTO??
     public Exercise addNewExercise(@RequestBody ExerciseRequest exerciseRequest) {
 
         if(exerciseRequest.getExerciseName() == ""){

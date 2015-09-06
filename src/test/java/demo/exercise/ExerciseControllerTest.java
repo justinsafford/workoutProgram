@@ -5,14 +5,12 @@ import demo.data.ExerciseRepository;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
-import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Matchers;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.Collections;
 import java.util.List;
@@ -22,7 +20,6 @@ import static org.hamcrest.core.Is.isA;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.*;
 
-@RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
 public class ExerciseControllerTest {
     @Mock
@@ -50,7 +47,6 @@ public class ExerciseControllerTest {
 //        exerciseRequest.setExerciseName("exercise");
 //        exerciseRequest.setMuscleGroup("muscle");
         Exercise actualExercise = exerciseController.addNewExercise(exerciseRequest);
-
 //TODO:Figure out how to test this controller
 // assertThat(actualExercise, is(expectedExercise))‰;
         verify(exerciseRepository, times(1)).save(Matchers.isA(Exercise.class));
@@ -70,6 +66,7 @@ public class ExerciseControllerTest {
     }
 
     //TODO: Look to implement SPRING's Error validation
+    @Test
     public void addNewExerciseWithNoMuscleGroup_throwsBadRequestException() throws BadRequestException {
         expectedException.expect(isA(BadRequestException.class));
         expectedException.expectMessage("You must send Muscle Group");
