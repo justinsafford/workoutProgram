@@ -30,7 +30,7 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standal
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
 @WebAppConfiguration
-public class addNewExercise {
+public class addExercise {
 
     @Autowired
     ExerciseRepository exerciseRepository;
@@ -52,7 +52,7 @@ public class addNewExercise {
     }
 
     @Test
-    public void addNewExercise() throws Exception {
+    public void addNewExercise_Integration() throws Exception {
         Exercise exercise = new Exercise();
         exercise.setExerciseName("Shoulder Press");
         exercise.setMuscleGroup("Shoulder");
