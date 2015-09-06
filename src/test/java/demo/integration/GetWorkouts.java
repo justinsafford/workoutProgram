@@ -2,7 +2,7 @@ package demo.integration;
 
 import demo.Application;
 import demo.data.WorkoutRepository;
-import demo.workout.ExerciseSet;
+import demo.workout.ExerciseSetsReps;
 import demo.workout.WorkoutEntity;
 import org.junit.Before;
 import org.junit.Test;
@@ -58,20 +58,20 @@ public class GetWorkouts {
         WorkoutEntity workoutEntity = new WorkoutEntity();
         workoutEntity.setDayWorkoutOccurred("Thursday");
 
-        ExerciseSet exerciseSet1 = new ExerciseSet();
-        exerciseSet1.setExerciseName("Incline Shoulder Press");
-        exerciseSet1.setMuscleGroup("Shoulder");
-        exerciseSet1.setReps(new String[]{"10", "9", "8", "8"});
+        ExerciseSetsReps exerciseSetsReps1 = new ExerciseSetsReps();
+        exerciseSetsReps1.setExerciseName("Incline Shoulder Press");
+        exerciseSetsReps1.setMuscleGroup("Shoulder");
+        exerciseSetsReps1.setReps(new String[]{"10", "9", "8", "8"});
 
-        ExerciseSet exerciseSet2 = new ExerciseSet();
-        exerciseSet2.setExerciseName("Incline Bench Press");
-        exerciseSet2.setMuscleGroup("Chest");
-        exerciseSet2.setReps(new String[]{"20", "12", "13", "14", "15"});
+        ExerciseSetsReps exerciseSetsReps2 = new ExerciseSetsReps();
+        exerciseSetsReps2.setExerciseName("Incline Bench Press");
+        exerciseSetsReps2.setMuscleGroup("Chest");
+        exerciseSetsReps2.setReps(new String[]{"20", "12", "13", "14", "15"});
 
-        List<ExerciseSet> exerciseSets = new ArrayList<>();
-        exerciseSets.add(exerciseSet1);
-        exerciseSets.add(exerciseSet2);
-        workoutEntity.setExerciseSets(exerciseSets);
+        List<ExerciseSetsReps> exerciseSetsReps = new ArrayList<>();
+        exerciseSetsReps.add(exerciseSetsReps1);
+        exerciseSetsReps.add(exerciseSetsReps2);
+        workoutEntity.setExerciseSetsReps(exerciseSetsReps);
 
         workoutRepository.save(workoutEntity);
 

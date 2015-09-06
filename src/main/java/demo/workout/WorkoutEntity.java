@@ -8,8 +8,9 @@ public class WorkoutEntity {
 
     @Id
     private String Id;
+
     private String dayWorkoutOccurred;
-    private List<ExerciseSet> exerciseSets;
+    private List<ExerciseSetsReps> exerciseSetsReps;
 
 
     public String getDayWorkoutOccurred() {
@@ -20,11 +21,11 @@ public class WorkoutEntity {
         this.dayWorkoutOccurred = dayWorkoutOccurred;
     }
 
-    public List<ExerciseSet> getExerciseSets() {
-        return exerciseSets;
+    public List<ExerciseSetsReps> getExerciseSetsReps() {
+        return exerciseSetsReps;
     }
 
-    public void setExerciseSets(List<ExerciseSet> exerciseSets) {
-        this.exerciseSets = exerciseSets;
+    public void setExerciseSetsReps(List<ExerciseSetsReps> exerciseSetsReps) {
+        this.exerciseSetsReps = exerciseSetsReps;
     }
 }

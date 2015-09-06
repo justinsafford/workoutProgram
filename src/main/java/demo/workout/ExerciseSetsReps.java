@@ -1,6 +1,6 @@
 package demo.workout;
 
-public class ExerciseSet {
+public class ExerciseSetsReps {
     private String exerciseName;
     private String muscleGroup;
     private String[] reps;

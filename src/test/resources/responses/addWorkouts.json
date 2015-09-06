@@ -1,6 +1,6 @@
 {
   "dayWorkoutOccurred": "Tuesday",
-  "exerciseSets": [
+  "exerciseSetsReps": [
     {
       "exerciseName": "Shoulder Press",
       "muscleGroup": "Shoulder",
