@@ -32,14 +32,14 @@ public class WorkoutControllerTest {
         WorkoutRequest workoutRequest = new WorkoutRequest();
         workoutRequest.setDayWorkoutOccurred("Wednesday");
 
-        ExerciseSet exerciseSet = new ExerciseSet();
-        exerciseSet.setExerciseName("exercise");
-        exerciseSet.setMuscleGroup("muscle");
-        exerciseSet.setReps(new String[]{"1", "2", "3", "4"});
+        ExerciseSetsReps exerciseSetsReps = new ExerciseSetsReps();
+        exerciseSetsReps.setExerciseName("exercise");
+        exerciseSetsReps.setMuscleGroup("muscle");
+        exerciseSetsReps.setReps(new String[]{"1", "2", "3", "4"});
 
-        List<ExerciseSet> exerciseSetList = new ArrayList<>();
-        exerciseSetList.add(exerciseSet);
-        workoutRequest.setExerciseSets(exerciseSetList);
+        List<ExerciseSetsReps> exerciseSetsRepsList = new ArrayList<>();
+        exerciseSetsRepsList.add(exerciseSetsReps);
+        workoutRequest.setExerciseSetsReps(exerciseSetsRepsList);
 
         WorkoutEntity newWorkout = new WorkoutEntity();
         WorkoutEntity expectedWorkout = new WorkoutEntity();
@@ -57,10 +57,10 @@ public class WorkoutControllerTest {
 
 //    @Test
 //    public void returnAvailableExercises() {
-//        List<Exercise> expectedData = Collections.singletonList(new Exercise());
+//        List<ExerciseEntity> expectedData = Collections.singletonList(new ExerciseEntity());
 //        when(exerciseRepository.findAll()).thenReturn(expectedData);
 //
-//        List<Exercise> actualData = exerciseController.getExercises();
+//        List<ExerciseEntity> actualData = exerciseController.getExercises();
 //
 //        assertThat(actualData, is(expectedData));
 //    }

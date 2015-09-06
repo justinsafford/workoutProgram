@@ -18,6 +18,7 @@ public class WorkoutController {
         this.workoutRepository = workoutRepository;
     }
 
+
     @RequestMapping(
             value = "/workouts",
             method = RequestMethod.POST,
@@ -26,7 +27,7 @@ public class WorkoutController {
     public WorkoutEntity addNewWorkout(@RequestBody WorkoutRequest workoutRequest) {
         WorkoutEntity workoutEntity = new WorkoutEntity();
         workoutEntity.setDayWorkoutOccurred(workoutRequest.getDayWorkoutOccurred());
-        workoutEntity.setExerciseSets(workoutRequest.getExerciseSets());
+        workoutEntity.setExerciseSetsReps(workoutRequest.getExerciseSetsReps());
 
         workoutRepository.save(workoutEntity);
 

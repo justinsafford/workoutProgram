@@ -68,15 +68,15 @@ public class addWorkout {
         WorkoutEntity returnedWorkoutEntity = workoutList.get(0);
 
         assertThat(returnedWorkoutEntity.getDayWorkoutOccurred(), is("Tuesday"));
-        assertThat(returnedWorkoutEntity.getExerciseSets().size(), Matchers.is(1));
-        assertThat(returnedWorkoutEntity.getExerciseSets().get(0).getExerciseName(), is("Shoulder Press"));
-        assertThat(returnedWorkoutEntity.getExerciseSets().get(0).getMuscleGroup(), is("Shoulder"));
-        assertThat(returnedWorkoutEntity.getExerciseSets().get(0).getReps().length, Matchers.is(4));
+        assertThat(returnedWorkoutEntity.getExerciseSetsReps().size(), Matchers.is(1));
+        assertThat(returnedWorkoutEntity.getExerciseSetsReps().get(0).getExerciseName(), is("Shoulder Press"));
+        assertThat(returnedWorkoutEntity.getExerciseSetsReps().get(0).getMuscleGroup(), is("Shoulder"));
+        assertThat(returnedWorkoutEntity.getExerciseSetsReps().get(0).getReps().length, Matchers.is(4));
         //dig into reps
-        assertThat(returnedWorkoutEntity.getExerciseSets().get(0).getReps()[0], is("1"));
-        assertThat(returnedWorkoutEntity.getExerciseSets().get(0).getReps()[1], is("2"));
-        assertThat(returnedWorkoutEntity.getExerciseSets().get(0).getReps()[2], is("3"));
-        assertThat(returnedWorkoutEntity.getExerciseSets().get(0).getReps()[3], is("4"));
+        assertThat(returnedWorkoutEntity.getExerciseSetsReps().get(0).getReps()[0], is("1"));
+        assertThat(returnedWorkoutEntity.getExerciseSetsReps().get(0).getReps()[1], is("2"));
+        assertThat(returnedWorkoutEntity.getExerciseSetsReps().get(0).getReps()[2], is("3"));
+        assertThat(returnedWorkoutEntity.getExerciseSetsReps().get(0).getReps()[3], is("4"));
     }
 
     @Test
@@ -95,13 +95,13 @@ public class addWorkout {
         WorkoutEntity returnedWorkoutEntity = workoutList.get(0);
 
         assertThat(returnedWorkoutEntity.getDayWorkoutOccurred(), is("Tuesday"));
-        assertThat(returnedWorkoutEntity.getExerciseSets().size(), Matchers.is(2));
-        assertThat(returnedWorkoutEntity.getExerciseSets().get(0).getExerciseName(), is("Shoulder Press"));
-        assertThat(returnedWorkoutEntity.getExerciseSets().get(0).getMuscleGroup(), is("Shoulder"));
-        assertThat(returnedWorkoutEntity.getExerciseSets().get(0).getReps().length, Matchers.is(4));
+        assertThat(returnedWorkoutEntity.getExerciseSetsReps().size(), Matchers.is(2));
+        assertThat(returnedWorkoutEntity.getExerciseSetsReps().get(0).getExerciseName(), is("Shoulder Press"));
+        assertThat(returnedWorkoutEntity.getExerciseSetsReps().get(0).getMuscleGroup(), is("Shoulder"));
+        assertThat(returnedWorkoutEntity.getExerciseSetsReps().get(0).getReps().length, Matchers.is(4));
 
-        assertThat(returnedWorkoutEntity.getExerciseSets().get(1).getExerciseName(), is("Bench Press"));
-        assertThat(returnedWorkoutEntity.getExerciseSets().get(1).getMuscleGroup(), is("Chest"));
-        assertThat(returnedWorkoutEntity.getExerciseSets().get(1).getReps().length, Matchers.is(5));
+        assertThat(returnedWorkoutEntity.getExerciseSetsReps().get(1).getExerciseName(), is("Bench Press"));
+        assertThat(returnedWorkoutEntity.getExerciseSetsReps().get(1).getMuscleGroup(), is("Chest"));
+        assertThat(returnedWorkoutEntity.getExerciseSetsReps().get(1).getReps().length, Matchers.is(5));
     }
 }

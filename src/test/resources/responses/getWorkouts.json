@@ -1,7 +1,7 @@
 [
   {
     "dayWorkoutOccurred": "Thursday",
-    "exerciseSets": [
+    "exerciseSetsReps": [
       {
         "exerciseName": "Incline Shoulder Press",
         "muscleGroup": "Shoulder",

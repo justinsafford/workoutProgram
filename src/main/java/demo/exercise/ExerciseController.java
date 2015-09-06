@@ -17,21 +17,13 @@ public class ExerciseController {
         this.exerciseRepository = exerciseRepository;
     }
 
-    @RequestMapping(
-            value = "/exercises",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Exercise> getExercises() {
-        return exerciseRepository.findAll();
-    }
 
     @RequestMapping(
             value = "/exercises",
             method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseStatus(HttpStatus.ACCEPTED)
-    //TODO:Change this to a responseDTO??
-    public Exercise addNewExercise(@RequestBody ExerciseRequest exerciseRequest) {
+    @ResponseStatus(HttpStatus.CREATED)
+    public ExerciseEntity addNewExercise(@RequestBody ExerciseRequest exerciseRequest) {
 
         if(exerciseRequest.getExerciseName() == ""){
             throw new BadRequestException("You must send Exercise Name");
@@ -41,11 +33,19 @@ public class ExerciseController {
             throw new BadRequestException("You must send Muscle Group");
         }
 
-        Exercise exercise = new Exercise();
-        exercise.setExerciseName(exerciseRequest.getExerciseName());
-        exercise.setMuscleGroup(exerciseRequest.getMuscleGroup());
-        exerciseRepository.save(exercise);
+        ExerciseEntity exerciseEntity = new ExerciseEntity();
+        exerciseEntity.setExerciseName(exerciseRequest.getExerciseName());
+        exerciseEntity.setMuscleGroup(exerciseRequest.getMuscleGroup());
+        exerciseRepository.save(exerciseEntity);
 
-        return exercise;
+        return exerciseEntity;
+    }
+
+    @RequestMapping(
+            value = "/exercises",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<ExerciseEntity> getExercises() {
+        return exerciseRepository.findAll();
     }
 }

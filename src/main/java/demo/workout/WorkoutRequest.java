@@ -5,7 +5,7 @@ import java.util.List;
 
 public class WorkoutRequest {
     private String dayWorkoutOccurred;
-    private List<ExerciseSet> exerciseSets = new ArrayList<>();
+    private List<ExerciseSetsReps> exerciseSetsReps = new ArrayList<>();
 
     public void setDayWorkoutOccurred(String dayWorkoutOccurred) {
         this.dayWorkoutOccurred = dayWorkoutOccurred;
@@ -15,11 +15,11 @@ public class WorkoutRequest {
         return dayWorkoutOccurred;
     }
 
-    public List<ExerciseSet> getExerciseSets() {
-        return exerciseSets;
+    public List<ExerciseSetsReps> getExerciseSetsReps() {
+        return exerciseSetsReps;
     }
 
-    public void setExerciseSets(List<ExerciseSet> exerciseSets) {
-        this.exerciseSets = exerciseSets;
+    public void setExerciseSetsReps(List<ExerciseSetsReps> exerciseSetsReps) {
+        this.exerciseSetsReps = exerciseSetsReps;
     }
 }

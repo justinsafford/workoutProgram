@@ -2,7 +2,7 @@ package demo.exercise;
 
 import org.springframework.data.annotation.Id;
 
-public class Exercise {
+public class ExerciseEntity {
 
     @Id
     private String id;

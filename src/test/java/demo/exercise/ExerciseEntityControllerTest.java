@@ -21,7 +21,7 @@ import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.*;
 
 @SpringApplicationConfiguration(classes = Application.class)
-public class ExerciseControllerTest {
+public class ExerciseEntityControllerTest {
     @Mock
     ExerciseRepository exerciseRepository;
 
@@ -36,20 +36,20 @@ public class ExerciseControllerTest {
 
     @Test
     public void addNewExercise() {
-        Exercise exercise = new Exercise();
-        exercise.setExerciseName("Shoulder Press");
-        exercise.setMuscleGroup("Shoulder");
+        ExerciseEntity exerciseEntity = new ExerciseEntity();
+        exerciseEntity.setExerciseName("Shoulder Press");
+        exerciseEntity.setMuscleGroup("Shoulder");
 
-        Exercise expectedExercise = new Exercise();
-        when(exerciseRepository.save(exercise)).thenReturn(expectedExercise);
+        ExerciseEntity expectedExerciseEntity = new ExerciseEntity();
+        when(exerciseRepository.save(exerciseEntity)).thenReturn(expectedExerciseEntity);
 
         ExerciseRequest exerciseRequest = new ExerciseRequest();
-//        exerciseRequest.setExerciseName("exercise");
+//        exerciseRequest.setExerciseName("exerciseEntity");
 //        exerciseRequest.setMuscleGroup("muscle");
-        Exercise actualExercise = exerciseController.addNewExercise(exerciseRequest);
+        ExerciseEntity actualExerciseEntity = exerciseController.addNewExercise(exerciseRequest);
 //TODO:Figure out how to test this controller
-// assertThat(actualExercise, is(expectedExercise))‰;
-        verify(exerciseRepository, times(1)).save(Matchers.isA(Exercise.class));
+// assertThat(actualExerciseEntity, is(expectedExerciseEntity))‰;
+        verify(exerciseRepository, times(1)).save(Matchers.isA(ExerciseEntity.class));
     }
 
     @Test
@@ -80,10 +80,10 @@ public class ExerciseControllerTest {
 
     @Test
     public void returnAvailableExercises() {
-        List<Exercise> expectedData = Collections.singletonList(new Exercise());
+        List<ExerciseEntity> expectedData = Collections.singletonList(new ExerciseEntity());
         when(exerciseRepository.findAll()).thenReturn(expectedData);
 
-        List<Exercise> actualData = exerciseController.getExercises();
+        List<ExerciseEntity> actualData = exerciseController.getExercises();
 
         assertThat(actualData, is(expectedData));
     }
